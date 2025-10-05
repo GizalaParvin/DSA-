@@ -1,0 +1,71 @@
+public class circularll {
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    private Node head;
+
+    public void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+        } else {
+            Node current = head;
+            while (current.next != head) {
+                current = current.next;
+            }
+            current.next = newNode;
+            newNode.next = head;
+            head = newNode;
+        }
+    }
+    public void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+        } else {
+            Node current = head;
+            while (current.next != head) {
+                current = current.next;
+            }
+            current.next = newNode;
+            newNode.next = head;
+        }
+    }   
+    public void deleteatbeggining() {
+
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        if (head.next == head) {
+            head = null;
+            return;
+        }
+        Node current = head;
+        while (current.next != head) {
+            current = current.next;
+        }
+        current.next = head.next;
+        head = head.next;
+    }
+
+    public static void main(String[] args) {
+        circularll cll = new circularll();
+
+        // Insert elements
+        cll.insertAtEnd(10);
+        cll.insertAtEnd(20);
+        cll.insertAtEnd(30);
+        cll.insertAtBeginning(5);
+        cll.deleteatbeggining();
+    }
+}
